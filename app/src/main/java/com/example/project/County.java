@@ -26,4 +26,36 @@ public class County {
         this.population = population;
         this.imgurl = imgurl;
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCityOfResidence() {
+        return cityOfResidence;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getCodeOfCounty() {
+        return codeOfCounty;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public String getImgurl() {
+        return imgurl;
+    }
 }
