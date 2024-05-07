@@ -54,6 +54,13 @@ public class County {
     public String getPopulation() {
         return population;
     }
+    public int getSizeInt() {
+        return Integer.parseInt(size);
+    }
+
+    public int getPopulationInt() {
+        return Integer.parseInt(population);
+    }
 
     public String getImgurl() {
         return imgurl;

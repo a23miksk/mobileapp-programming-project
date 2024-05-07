@@ -35,8 +35,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(items.get(position).getName());
-        holder.population.setText(items.get(position).getPopulation());
-        holder.size.setText(items.get(position).getSize());
+        holder.population.setText("Folkmängd: " + items.get(position).getPopulation() + " invånare");
+        holder.size.setText("Area: " + items.get(position).getSize() + "km²");
 
         /*Picasso.get()
                 .load(items.get(position).getImgurl())
