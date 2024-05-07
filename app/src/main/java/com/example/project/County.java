@@ -10,13 +10,13 @@ public class County {
     private String location;
     @SerializedName("category")
     private String codeOfCounty;
-    private int size;
+    private String size;
     @SerializedName("cost")
-    private int population;
+    private String population;
     @SerializedName("auxdata")
     private String imgurl;
 
-    public County(String ID, String name, String cityOfResidence, String location, String codeOfCounty, int size, int population, String imgurl) {
+    public County(String ID, String name, String cityOfResidence, String location, String codeOfCounty, String size, String population, String imgurl) {
         this.ID = ID;
         this.name = name;
         this.cityOfResidence = cityOfResidence;
@@ -47,11 +47,11 @@ public class County {
         return codeOfCounty;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public int getPopulation() {
+    public String getPopulation() {
         return population;
     }
 

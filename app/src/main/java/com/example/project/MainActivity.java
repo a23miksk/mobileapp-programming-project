@@ -32,16 +32,19 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Button activityButton = findViewById(R.id.aboutButton);
         activityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("==>", "Button clicked");
+
                 Intent intent = new Intent(MainActivity.this, About.class);
 
                 startActivity(intent);
             }
         });
+
+
         adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(County item) {

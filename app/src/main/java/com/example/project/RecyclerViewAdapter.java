@@ -35,10 +35,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(items.get(position).getName());
+        holder.population.setText(items.get(position).getPopulation());
+        holder.size.setText(items.get(position).getSize());
 
-        Picasso.get()
+        /*Picasso.get()
                 .load(items.get(position).getImgurl())
-                .into(holder.banner);
+                .into(holder.banner);*/
     }
 
     @Override
@@ -48,14 +50,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
-        ImageView banner;
+        TextView population;
+        TextView size;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title);
-            banner = itemView.findViewById(R.id.banner);
+            population = itemView.findViewById(R.id.population);
+            size = itemView.findViewById(R.id.size);
+
         }
 
         @Override
