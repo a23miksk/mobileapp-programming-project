@@ -4,6 +4,8 @@ import static androidx.core.content.ContextCompat.startActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,18 +31,66 @@ import java.util.Comparator;
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener, AdapterView.OnItemSelectedListener{
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a23miksk";
     ArrayList<County> items = new ArrayList<>();
+    ArrayList<County> filteredItems = new ArrayList<>();
+    private int filterMinInt = 0;
+    private int filterMaxInt = 1767016;
     private RecyclerViewAdapter adapter;
 
     String[] sorts = { "Län", "Folkmängd",
             "Area"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final EditText filterMin = findViewById(R.id.filterMin);
+        final EditText filterMax = findViewById(R.id.filterMax);
+
+        filterMin.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0)
+                    filterMin.setText("");
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        filterMax.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0)
+                    filterMax.setText("");
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         Spinner sortSpinner = findViewById(R.id.sortSpinner);
         sortSpinner.setOnItemSelectedListener(this);
+
 
         ArrayAdapter sortAdapter
                 = new ArrayAdapter(
@@ -76,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
 
         new JsonTask(this).execute(JSON_URL);
+
 
     }
 
