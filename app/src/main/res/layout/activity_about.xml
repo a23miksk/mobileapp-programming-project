@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
         android:textSize="18sp"
         android:text="Denna app är gjord för politiker i Sverige för att visa information om lika län. Det kan till exempel vara så att det önskas veta hur många invånare som bor i ett län, hur stort länet är och kanske hur många personer per boyta som existerar."/>
 

@@ -65,12 +65,16 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text = s.toString();
-                if (text.isEmpty()) {
+                if (!text.isEmpty() && text.startsWith("0") && text.length() > 1) {
+                    text = text.substring(1);
+                    filterMin.setText(text);
+                    filterMin.setSelection(text.length());
+                } else if (text.isEmpty()) {
                     text = "0";
                 }
+
                 int minValue = Integer.parseInt(text);
                 int maxValue = Integer.parseInt(myPreferenceRef.getString("MyAppPreferenceFilterMax", "1767016"));
-
                 if (minValue > maxValue) {
                     text = String.valueOf(maxValue);
                     filterMin.setText(text);
@@ -96,12 +100,16 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text = s.toString();
-                if (text.isEmpty()) {
+                if (!text.isEmpty() && text.startsWith("0") && text.length() > 1) {
+                    text = text.substring(1);
+                    filterMax.setText(text);
+                    filterMax.setSelection(text.length());
+                } else if (text.isEmpty()) {
                     text = "0";
                 }
+
                 int maxValue = Integer.parseInt(text);
                 int minValue = Integer.parseInt(myPreferenceRef.getString("MyAppPreferenceFilterMin", "0"));
-
                 if (maxValue < minValue) {
                     text = String.valueOf(minValue);
                     filterMax.setText(text);
@@ -147,7 +155,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         adapter = new RecyclerViewAdapter(this, filteredItems, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(County item) {
-                Toast.makeText(MainActivity.this, item.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, Information.class);
+
+                intent.putExtra("carriedCounty", new Gson().toJson(item)); // Optional
+
+                startActivity(intent);
             }
         });
         RecyclerView view = findViewById(R.id.recycler_view);

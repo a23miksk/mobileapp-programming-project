@@ -65,4 +65,18 @@ public class County {
     public String getImgurl() {
         return imgurl;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "ID='" + ID + '\'' +
+                ", name='" + name + '\'' +
+                ", cityOfResidence='" + cityOfResidence + '\'' +
+                ", location='" + location + '\'' +
+                ", codeOfCounty='" + codeOfCounty + '\'' +
+                ", size='" + size + '\'' +
+                ", population='" + population + '\'' +
+                ", imgurl='" + imgurl + '\'' +
+                '}';
+    }
 }
